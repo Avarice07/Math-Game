@@ -15,6 +15,17 @@ namespace Hello_the_world
             Console.Write("Press any key to proceed to the Menu Screen");
 
 
+            Console.Clear();
+
+            Console.WriteLine("Which game would you like to play today? Kindly choose below:");
+            Console.WriteLine("A - Addition");
+            Console.WriteLine("S - Subtraction");
+            Console.WriteLine("M - Multiplication");
+            Console.WriteLine("D - Division");
+            Console.WriteLine("V - View Past Games");
+            Console.WriteLine("------------------------------------------------------------");
+
+
         }
 
 
