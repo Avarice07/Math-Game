@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace Hello_the_world
 {
@@ -29,12 +30,13 @@ namespace Hello_the_world
                 Random a = new Random();
                 bool t = true;
                 int round = 0;
+                int score = 0;
 
                 while(t) {
                     char option = Console.ReadKey(true).KeyChar;
                     if (option == 'A' || option == 'a')
                     {
-                        while (round < 6)
+                        while (round < 5)
                         {
                             Console.Clear();
                             int x = a.Next(101);
@@ -46,31 +48,40 @@ namespace Hello_the_world
                                 if (answer == x + y)
                                 {
                                     Console.WriteLine("Correct!!!");
-                                    player.score += 1;
+                                    score += 1;
                                     AnyKey(1);
 
                                 }
-                                else 
+                                else
                                 {
                                     Console.WriteLine("Wrong Answer!!");
                                     AnyKey(1);
-                                
+
                                 }
-                                
+
                             }
-                            catch (Exception e) 
+                            catch (Exception e)
                             {
                                 Console.WriteLine("Wrong Value");
                                 AnyKey(1);
                             }
+
+
                             round += 1;
 
 
                         }
-                        
-                        t= false;
+                        player.playerRecord.Add(new Record(score, DateTime.Now));
+                        t = false;
+                        Console.WriteLine($"You got {score} out of the 5 correct!!!");
+                        AnyKey(1);
+                        Menu();
 
 
+                    }
+                    else if (option == 'Q' || option == 'q') 
+                    {
+                        Environment.Exit(0);
                     }
                     else
                     {
@@ -79,30 +90,35 @@ namespace Hello_the_world
 
                 }
 
-
-                
-               
-
-
-
             }
 
+            void MathRound()
+            { 
             
+            }
 
+            void Menu() 
+            {
+                Console.WriteLine($"Which game would you like to play today {player.name}? Kindly choose below:");
+                Console.WriteLine("A - Addition");
+                Console.WriteLine("S - Subtraction");
+                Console.WriteLine("M - Multiplication");
+                Console.WriteLine("D - Division");
+                Console.WriteLine("V - View Past Games");
+                Console.WriteLine("Q - To quit");
+                Console.WriteLine("------------------------------------------------------------");
+
+                OptionKey();
+
+            }
+            
+            Console.Clear();
             Console.WriteLine($"Welcome {player.name} to your very own math game!!!");
             //Console.WriteLine($"The Curret time is {DateTime.Now}");
             Console.Write("Press any key to proceed to the Menu Screen");
             AnyKey(0);
-
-            Console.WriteLine($"Which game would you like to play today {player.name}? Kindly choose below:");
-            Console.WriteLine("A - Addition");
-            Console.WriteLine("S - Subtraction");
-            Console.WriteLine("M - Multiplication");
-            Console.WriteLine("D - Division");
-            Console.WriteLine("V - View Past Games");
-            Console.WriteLine("------------------------------------------------------------");
-
-            OptionKey();
+            Menu();
+           
             
 
            
