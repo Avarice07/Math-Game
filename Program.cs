@@ -6,18 +6,14 @@ namespace Hello_the_world
     {
         static void Main(string[] args)
         {
-            Console.Write("Anung pangalan mo Yawa??: ");
-            const double pi = Math.PI;
-                string word = Console.ReadLine();
-                if (word == "Ann")
-                {
-                    Console.WriteLine("Apaka Ambot mo " + word+ "!!!!");
-                } else if (word=="Victor"){
-                    Console.WriteLine("Ang pogi mo " + word);
-                }
-                else {
-                    Console.WriteLine("Cnu ka " + word +"??");
-               }
+            Console.Write("What is your name?: ");
+            string name = Console.ReadLine();
+            var player = new Player(name, 0);
+
+            Console.WriteLine($"Welcome {player.name} to your very own math game!!!");
+            //Console.WriteLine($"The Curret time is {DateTime.Now}");
+            Console.Write("Press any key to proceed to the Menu Screen");
+
 
         }
 
